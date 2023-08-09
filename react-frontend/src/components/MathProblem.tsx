@@ -1,19 +1,28 @@
 import { useState } from "react"
+import MathProblemGenerator from "../MathGeneration/MathProblemGenerator"
 
 function MathProblem() {
   const [userInput, setUserInput] = useState(0)
   
-  // const [firstOperand, setFirstOperand] = useState(0)
-  // const [secondOperand, setSecondOperand] = useState(0)
-  // const [operation, setOperation] = useState('')
+  const [mathProblem, setMathProblem] = useState(MathProblemGenerator.generateProblem())
 
   function handleSubmitResult(e: React.FormEvent) {
     e.preventDefault()
 
+    const problem = MathProblemGenerator.generateProblem()
+    setMathProblem({
+      firstOperand: problem.firstOperand,
+      secondOperand: problem.secondOperand,
+      operation: problem.operation
+    })
+
   }
 
   return(
-    <div className="MathProblem">
+    <div className="">
+      <div className="">
+        {mathProblem.firstOperand} {mathProblem.operation} {mathProblem.secondOperand}
+      </div>
       <form onSubmit={handleSubmitResult}>
         <label htmlFor="user-input">User Input</label>
         <input 
