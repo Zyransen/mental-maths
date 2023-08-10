@@ -37,7 +37,33 @@ class MathProblemGenerator {
 
   private generateOperand(operation: Operation): number {
     const max = this.getMax(operation)
-    return Math.floor(Math.random() * max)
+    let operand = Math.floor(Math.random() * max)
+
+    // regenerate operand if its not valid
+    if(!this.checkOperandValidity(operand, operation)) {
+      operand = this.generateOperand(operation)
+    }
+
+    return operand
+  }
+
+  /**
+   * Checks if a generated operand is valid for use in a math problem.
+   * @param operand the operand to be checked
+   * @param operation the operation used in the generated math problem
+   * @returns true, if the operand is valid
+   */
+  private checkOperandValidity(operand: number, operation: Operation): boolean {
+    // 0 as an operand is trivial (no matter the operation)
+    if(operand === 0){
+      return false
+    }
+    // multiplication with 1 is trivial
+    if(operation === Operation.Multiplication && operand === 1){
+      return false
+    }
+    
+    return true
   }
 
   private getMax(operation: Operation): number {
