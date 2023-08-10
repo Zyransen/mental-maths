@@ -1,14 +1,12 @@
 import { useEffect, useState } from "react"
 import MathProblemGenerator from "../MathGeneration/MathProblemGenerator"
+import timerSettings from "../Settings/TimerSettings"
 
 function MathProblem() {
   const [userInput, setUserInput] = useState<number>(0)
   const [score, setScore] = useState<number>(0)   
   const [mathProblem, setMathProblem] = useState(MathProblemGenerator.generateProblem())
-  
-  // maximum amount of time (seconds) the user has to solve a math problem
-  const TIME_TO_SOLVE = 10
-  const [timeLeft, setTimeLeft] = useState<number>(TIME_TO_SOLVE)
+  const [timeLeft, setTimeLeft] = useState<number>(timerSettings.timeToSolve)
 
   function handleSubmitResult(e: React.FormEvent) {
     e.preventDefault()
@@ -16,7 +14,7 @@ function MathProblem() {
     // generate a new math problem, increase the users score and reset timer, if correct result is submitted
     if(userInput === mathProblem.result) {
       generateNewProblem()
-      setTimeLeft(TIME_TO_SOLVE)
+      setTimeLeft(timerSettings.timeToSolve)
       setScore(score + 1)
       return
     }
@@ -27,11 +25,14 @@ function MathProblem() {
   // decrements the time the user has left for the current math problem by 1 second each second
   useEffect(() => {
     const interval = setInterval(() => {
+      if(!timerSettings.isTimerEnabled) {
+        return
+      }
       if(timeLeft > 1){
         setTimeLeft(timeLeft => timeLeft - 1)
       } else {
         generateNewProblem()
-        setTimeLeft(TIME_TO_SOLVE)
+        setTimeLeft(timerSettings.timeToSolve)
         setScore(0)
       }
     }, 1000)
@@ -66,9 +67,11 @@ function MathProblem() {
       <div>
         Current Score: {score}
       </div>
+      { timerSettings.isTimerEnabled &&
       <div>
         Time left: {timeLeft}
       </div>
+      }
     </div>
   )
 }
