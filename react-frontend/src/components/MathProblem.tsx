@@ -13,7 +13,8 @@ function MathProblem() {
     setMathProblem({
       firstOperand: problem.firstOperand,
       secondOperand: problem.secondOperand,
-      operation: problem.operation
+      operation: problem.operation,
+      result: problem.result
     })
 
   }
@@ -21,7 +22,7 @@ function MathProblem() {
   return(
     <div className="">
       <div className="">
-        {mathProblem.firstOperand} {mathProblem.operation} {mathProblem.secondOperand}
+        {mathProblem.firstOperand} {mathProblem.operation} {mathProblem.secondOperand} = {mathProblem.result}
       </div>
       <form onSubmit={handleSubmitResult}>
         <label htmlFor="user-input">User Input</label>
