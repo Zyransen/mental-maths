@@ -1,5 +1,5 @@
 import { Operation } from "./ArithmeticOperation";
-import generatorSettings from "./GeneratorSettings";
+import generatorSettings from "../Settings/GeneratorSettings";
 
 export type MathProblem = {
   firstOperand: number,
