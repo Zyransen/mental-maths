@@ -11,8 +11,15 @@ export type MathProblem = {
 class MathProblemGenerator {
   generateProblem(): MathProblem {
     const randomOperation = this.generateOperation();
-    const firstOperand = this.generateOperand(randomOperation)
-    const secondOperand = this.generateOperand(randomOperation)
+    let firstOperand = this.generateOperand(randomOperation)
+    let secondOperand = this.generateOperand(randomOperation)
+
+    // avoid negative results in subtractions
+    if(randomOperation === Operation.Subtraction && firstOperand < secondOperand){
+      const temp = firstOperand
+      firstOperand = secondOperand
+      secondOperand = temp
+    }
 
     return {
       firstOperand: firstOperand,
