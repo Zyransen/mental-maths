@@ -2,13 +2,19 @@ import { useState } from "react"
 import MathProblemGenerator from "../MathGeneration/MathProblemGenerator"
 
 function MathProblem() {
-  const [userInput, setUserInput] = useState(0)
-  
+  const [userInput, setUserInput] = useState<number>(0)
   const [mathProblem, setMathProblem] = useState(MathProblemGenerator.generateProblem())
 
   function handleSubmitResult(e: React.FormEvent) {
     e.preventDefault()
 
+    if(userInput === mathProblem.result) {
+      generateNewProblem()
+      return
+    }
+  }
+
+  function generateNewProblem() {
     const problem = MathProblemGenerator.generateProblem()
     setMathProblem({
       firstOperand: problem.firstOperand,
@@ -16,7 +22,6 @@ function MathProblem() {
       operation: problem.operation,
       result: problem.result
     })
-
   }
 
   return(
@@ -25,7 +30,6 @@ function MathProblem() {
         {mathProblem.firstOperand} {mathProblem.operation} {mathProblem.secondOperand} = {mathProblem.result}
       </div>
       <form onSubmit={handleSubmitResult}>
-        <label htmlFor="user-input">User Input</label>
         <input 
           id="user-input" 
           type="number" 
@@ -34,7 +38,6 @@ function MathProblem() {
             setUserInput(e.target.valueAsNumber)
           }}  
         />
-        <button>Submit Answer</button>
       </form>
     </div>
   )
