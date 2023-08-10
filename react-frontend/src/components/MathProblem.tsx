@@ -3,6 +3,7 @@ import MathProblemGenerator from "../MathGeneration/MathProblemGenerator"
 
 function MathProblem() {
   const [userInput, setUserInput] = useState<number>(0)
+  const [score, setScore] = useState<number>(0)  
   const [mathProblem, setMathProblem] = useState(MathProblemGenerator.generateProblem())
 
   function handleSubmitResult(e: React.FormEvent) {
@@ -10,8 +11,12 @@ function MathProblem() {
 
     if(userInput === mathProblem.result) {
       generateNewProblem()
+      // increase score, if correct result is submitted
+      setScore(score + 1)
       return
     }
+    // set score to 0, if the submitted result is incorrect
+    setScore(0)
   }
 
   function generateNewProblem() {
@@ -39,6 +44,9 @@ function MathProblem() {
           }}  
         />
       </form>
+      <div>
+        Current Score: {score}
+      </div>
     </div>
   )
 }
