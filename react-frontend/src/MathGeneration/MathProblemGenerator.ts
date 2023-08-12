@@ -98,11 +98,14 @@ class MathProblemGenerator {
   }
 
   /**
-   * Returns the largest natural number with the specified number of digits.
+   * Returns the largest natural number with the specified number of digits (+1).
    * @param digits the amount of digits the returned number should have
-   * @return largest number with {@link digits} digits
+   * @return largest number with {@link digits} digits plus 1
    */
   private digitsToMax(digits: number): number {
+    if(digits < 0) {
+      throw new RangeError('Number of digits must not be less than 0.')
+    }
     return Math.pow(10, digits)
   }
 
