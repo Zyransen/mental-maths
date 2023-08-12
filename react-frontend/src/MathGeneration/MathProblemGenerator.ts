@@ -9,6 +9,10 @@ export type MathProblem = {
 };
 
 class MathProblemGenerator {
+  /**
+   * Randomly generates an object of type MathProblem, consisting of two operands, an operation, aswell as the result of the generated arithmetic problem
+   * @returns a newly generated MathProblem
+   */
   generateProblem(): MathProblem {
     const randomOperation = this.generateOperation();
     let firstOperand = this.generateOperand(randomOperation)
@@ -66,6 +70,11 @@ class MathProblemGenerator {
     return true
   }
 
+  /**
+   * Determines a maximum that each generated operand must be less than or equal to, depending on the number of digits specified in the generator settings.
+   * @param operation operation for which the maximum is to be determined
+   * @returns maximum as a number
+   */
   private getMax(operation: Operation): number {
     let digits = 0
 
@@ -89,7 +98,7 @@ class MathProblemGenerator {
   }
 
   /**
-   * Returns the largest natural number with the specified amount of digits.
+   * Returns the largest natural number with the specified number of digits.
    * @param digits the amount of digits the returned number should have
    * @return largest number with {@link digits} digits
    */
