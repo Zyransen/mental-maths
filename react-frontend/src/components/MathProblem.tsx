@@ -51,12 +51,13 @@ function MathProblem() {
 
   return(
     <div className="">
-      <div className="">
-        {mathProblem.firstOperand} {mathProblem.operation} {mathProblem.secondOperand} = {mathProblem.result}
+      <div className="text-center text-3xl">
+        {mathProblem.firstOperand} {mathProblem.operation === "*" ? "×" : mathProblem.operation} {mathProblem.secondOperand} {/* = mathProblem.result */}
       </div>
-      <form onSubmit={handleSubmitResult}>
+      <form onSubmit={handleSubmitResult} className="py-4">
         <input 
           id="user-input" 
+          className="text-center rounded-3xl w-52 border border-zinc-800 bg-zinc-600 shadow-[0_12px_25px_rgba(0,0,0,0.25)] py-2 text-2xl"
           type="number" 
           value={userInput} 
           onChange={(e: React.ChangeEvent<HTMLInputElement>) => {
@@ -64,11 +65,11 @@ function MathProblem() {
           }}  
         />
       </form>
-      <div>
+      <div className="text-center">
         Current Score: {score}
       </div>
       { timerSettings.isTimerEnabled &&
-      <div>
+      <div className="text-center">
         Time left: {timeLeft}
       </div>
       }
