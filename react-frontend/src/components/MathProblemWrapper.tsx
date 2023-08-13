@@ -3,6 +3,7 @@ import MathProblemGenerator from "../MathGeneration/MathProblemGenerator"
 import timerSettings from "../Settings/TimerSettings"
 import { CountdownCircleTimer } from 'react-countdown-circle-timer'
 import MathProblemVisualizer from "./MathProblemVisualizer"
+import Score from "./Score"
 
 
 function MathProblemWrapper() {
@@ -86,9 +87,7 @@ function MathProblemWrapper() {
           </div>
         }
       </div>
-      <div className="text-center">
-        Current Score: {score}
-      </div>
+      <Score currentScore={score}/>
     </div>
   )
 }
