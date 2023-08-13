@@ -2,9 +2,10 @@ import { useEffect, useState } from "react"
 import MathProblemGenerator from "../MathGeneration/MathProblemGenerator"
 import timerSettings from "../Settings/TimerSettings"
 import { CountdownCircleTimer } from 'react-countdown-circle-timer'
+import MathProblemVisualizer from "./MathProblemVisualizer"
 
 
-function MathProblem() {
+function MathProblemWrapper() {
   const [userInput, setUserInput] = useState<number>(0)
   const [score, setScore] = useState<number>(0)   
   const [mathProblem, setMathProblem] = useState(MathProblemGenerator.generateProblem())
@@ -55,9 +56,7 @@ function MathProblem() {
 
   return(
     <div className="">
-      <div className="text-center text-3xl">
-        {mathProblem.firstOperand} {mathProblem.operation === "*" ? "×" : mathProblem.operation} {mathProblem.secondOperand} {/* = mathProblem.result */}
-      </div>
+      <MathProblemVisualizer firstOperand={mathProblem.firstOperand} secondOperand={mathProblem.secondOperand} operation={mathProblem.operation}/>
       <div className="relative py-4 flex justify-center items-center w-80">
         <form onSubmit={handleSubmitResult}>
           <input 
@@ -94,4 +93,4 @@ function MathProblem() {
   )
 }
 
-export default MathProblem
+export default MathProblemWrapper

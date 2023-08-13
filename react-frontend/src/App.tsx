@@ -1,4 +1,4 @@
-import MathProblem from './components/MathProblem'
+import MathProblemWrapper from './components/MathProblemWrapper'
 function App() {
 
   return (
@@ -7,7 +7,7 @@ function App() {
         Mental Maths Trainer
       </div>
       <div className='flex items-center justify-center'>
-        <MathProblem/>
+        <MathProblemWrapper/>
       </div>
     </div>
   )
