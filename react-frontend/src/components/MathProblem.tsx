@@ -71,7 +71,7 @@ function MathProblem() {
           />
         </form>
         { timerSettings.isTimerEnabled &&
-          <div className="absolute right-0 my-auto">
+          <div className="absolute right-0 my-auto drop-shadow-[0_12px_25px_rgba(0,0,0,0.55)]">
             <CountdownCircleTimer
               key={key}
               isPlaying={timerSettings.isTimerEnabled}
