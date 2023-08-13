@@ -6,7 +6,7 @@ export type MathProblem = {
   secondOperand: number,
   operation: string,
   result: number
-};
+}
 
 class MathProblemGenerator {
   /**
@@ -18,8 +18,13 @@ class MathProblemGenerator {
     let firstOperand = this.generateOperand(randomOperation)
     let secondOperand = this.generateOperand(randomOperation)
 
-    // avoid negative results in subtractions
-    if(randomOperation === Operation.Subtraction && firstOperand < secondOperand){
+    while(!this.checkOperandValidity(firstOperand, secondOperand, randomOperation)) {
+      firstOperand = this.generateOperand(randomOperation)
+      secondOperand = this.generateOperand(randomOperation)
+    }
+
+    // avoid negative results from substractions
+    if(firstOperand < secondOperand) {
       const temp = firstOperand
       firstOperand = secondOperand
       secondOperand = temp
@@ -41,32 +46,33 @@ class MathProblemGenerator {
 
   private generateOperand(operation: Operation): number {
     const max = this.getMax(operation)
-    let operand = Math.floor(Math.random() * max)
+    return Math.floor(Math.random() * max)
 
-    // regenerate operand if its not valid
-    if(!this.checkOperandValidity(operand, operation)) {
-      operand = this.generateOperand(operation)
-    }
-
-    return operand
   }
 
   /**
    * Checks if a generated operand is valid for use in a math problem.
-   * @param operand the operand to be checked
+   * @param firstOperand the first operand to be checked
+   * @param secondOperand the second operand to be checked
    * @param operation the operation used in the generated math problem
-   * @returns true, if the operand is valid
+   * @returns an object of type Operands, containing either the operands passed to the function as parameters, if both of them were valid, or newly generated and optimised operands
    */
-  private checkOperandValidity(operand: number, operation: Operation): boolean {
+  private checkOperandValidity(firstOperand: number, secondOperand: number, operation: Operation): boolean {
     // 0 as an operand is trivial (no matter the operation)
-    if(operand === 0){
-      return false
-    }
-    // multiplication with 1 is trivial
-    if(operation === Operation.Multiplication && operand === 1){
+    if(firstOperand === 0 || secondOperand === 0) {
       return false
     }
     
+    // multiplication with 1 is trivial
+    if(operation === Operation.Multiplication && (firstOperand === 1 || secondOperand === 1)) {
+      return false
+    }
+
+    // avoid 0 as a result from subtractions
+    if(operation === Operation.Subtraction && firstOperand === secondOperand) {
+      return false
+    }
+
     return true
   }
 
