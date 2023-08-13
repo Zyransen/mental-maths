@@ -15,6 +15,10 @@ function MathProblemWrapper() {
 
   function handleSubmitResult(e: React.FormEvent) {
     e.preventDefault()
+
+    // empty input field
+    setUserInput(0)
+    
     // generate a new math problem, increase the users score and reset timer, if correct result is submitted
     if(userInput === mathProblem.result) {
       generateNewProblem()
@@ -22,6 +26,7 @@ function MathProblemWrapper() {
       setScore(score + 1)
       return
     }
+
     // set score to 0, if the submitted result is incorrect
     setScore(0)
   }
@@ -63,8 +68,9 @@ function MathProblemWrapper() {
           <input 
             id="user-input" 
             className="text-center rounded-3xl w-52 border border-zinc-800 bg-zinc-600 shadow-[0_12px_25px_rgba(0,0,0,0.25)] py-2 text-2xl"
-            type="number" 
-            value={userInput} 
+            type="number"
+            placeholder="result"
+            value={userInput || ''} 
             onChange={(e: React.ChangeEvent<HTMLInputElement>) => {
               setUserInput(e.target.valueAsNumber)
             }}  
