@@ -8,14 +8,19 @@ function ErrorPage() {
   }
 
   return (
-    <div>
-      <p>
+    <div className="w-screen h-screen flex flex-col justify-center items-center rows row-2">
+      <p className="text-xl md:text-3xl  text-center px-3">
         Sorry, the page you are trying to access does not exist.
       </p>
-
-      <button onClick={goHome}>
-        Take me back home
-      </button>
+      <div className="pt-7">
+        <button 
+          className="rounded-full py-2 px-5 text-2xl bg-fuchsia-800 hover:bg-fuchsia-800/80 shadow-[0_12px_25px_rgba(0,0,0,0.35)]"
+          onClick={goHome}
+        >
+          Take me home
+        </button>
+      </div>
+      
     </div>
   )
 }
