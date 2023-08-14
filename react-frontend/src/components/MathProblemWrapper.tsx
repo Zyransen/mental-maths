@@ -4,7 +4,7 @@ import timerSettings from "../Settings/TimerSettings"
 import { CountdownCircleTimer } from 'react-countdown-circle-timer'
 import MathProblemVisualizer from "./MathProblemVisualizer"
 import Score from "./Score"
-import SettingsButton from './SettingsButton';
+import SettingsButton from './SettingsButton'
 
 
 function MathProblemWrapper() {
@@ -75,7 +75,7 @@ function MathProblemWrapper() {
     // reset timer animation
     setKey(key+1)
   }
-
+  
   return(
     <div className="">
       <MathProblemVisualizer firstOperand={mathProblem.firstOperand} secondOperand={mathProblem.secondOperand} operation={mathProblem.operation}/>
@@ -110,7 +110,7 @@ function MathProblemWrapper() {
             </CountdownCircleTimer>
           </div>
         }        
-        <div className="absolute right-0 hover:animate-spin-slow">
+        <div className="absolute right-0 hover:animate-spin-slow cursor-pointer">
           <SettingsButton/>
         </div>
       </div>
