@@ -2,6 +2,7 @@ import { useState } from "react"
 import generatorSettings from "../Settings/GeneratorSettings"
 import { Operation } from "../MathGeneration/ArithmeticOperation"
 import timerSettings from "../Settings/TimerSettings"
+import { useNavigate } from "react-router-dom"
 
 function GeneratorSettingsPage() {
 
@@ -19,6 +20,8 @@ function GeneratorSettingsPage() {
   const [isTimerEnabled, setIsTimerEnabled] = useState<boolean>(timerSettings.isTimerEnabled)
   const [timerDuration, setTimerDuration] = useState<number>(timerSettings.timeToSolve)
 
+  // navigation
+  const navigate = useNavigate()
 
   function getValidDigits(userInput: number) {
     // number of digits of an operand must be greater than 1 and less than MAX_DIGITS
@@ -40,6 +43,29 @@ function GeneratorSettingsPage() {
     if(userInput > MAX_DURATION) { return MAX_DURATION }
 
     return userInput
+  }
+
+  function handleApply() {
+    const operations: Operation[] = []
+
+    if(addition) { operations.push(Operation.Addition) }
+    if(subtraction) { operations.push(Operation.Subtraction) }
+    if(multiplication) { operations.push(Operation.Multiplication) }
+
+    generatorSettings.operations = operations
+
+    generatorSettings.additionDigits = additionDigits
+    generatorSettings.subtractionDigits = subtractionDigits
+    generatorSettings.multiplicationDigits = multiplicationDigits
+
+    timerSettings.isTimerEnabled = isTimerEnabled
+    timerSettings.timeToSolve = timerDuration
+
+    navigate('/')
+  }
+
+  function handleCancel() {
+    navigate('/')
   }
 
   // does nothing (for 2nd part of in line conditional statements)
@@ -102,7 +128,7 @@ function GeneratorSettingsPage() {
             onChange={ () => {setMultiplication(!multiplication)} }
           />
           <div>
-            <label htmlFor="multiplication-digits-input">Max digits for operands (multilication)</label>
+            <label htmlFor="multiplication-digits-input">Max digits for operands (multiplication)</label>
             <input 
               id='multiplication-digits-input'
               type="number" 
@@ -133,6 +159,16 @@ function GeneratorSettingsPage() {
             onBlur={(e: React.ChangeEvent<HTMLInputElement>) => { e.target.value === '' ? setTimerDuration(1) : doNothing() }}
           />
         </div>
+      </div>
+
+      {/* apply / cancel buttons */}
+      <div>
+        <button onClick={handleApply}>
+          Apply Changes
+        </button>
+        <button onClick={handleCancel}>
+          Cancel
+        </button>
       </div>
     </div>
   )
