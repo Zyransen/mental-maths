@@ -85,6 +85,7 @@ function GeneratorSettingsPage() {
             checked={addition}
             onChange={ () => {setAddition(!addition)} }
           />
+          { addition &&
           <div>
             <label htmlFor="addition-digits-input">Max digits for operands (addition)</label>
             <input 
@@ -95,6 +96,8 @@ function GeneratorSettingsPage() {
               onBlur={(e: React.ChangeEvent<HTMLInputElement>) => { e.target.value === '' ? setAdditionDigits(1) : doNothing() }}
             />
           </div>
+          }
+          
         </div>
 
         {/* Subtraction Settings */}
@@ -106,6 +109,7 @@ function GeneratorSettingsPage() {
             checked={subtraction}
             onChange={ () => {setSubtraction(!subtraction)} }
           />
+          { subtraction &&
           <div>
             <label htmlFor="subtraction-digits-input">Max digits for operands (subtraction)</label>
             <input 
@@ -116,6 +120,7 @@ function GeneratorSettingsPage() {
               onBlur={(e: React.ChangeEvent<HTMLInputElement>) => { e.target.value === '' ? setSubtractionDigits(1) : doNothing() }}
             />
           </div>
+          }
         </div>
 
         {/* Multiplication Settings */}
@@ -127,6 +132,7 @@ function GeneratorSettingsPage() {
             checked={multiplication}
             onChange={ () => {setMultiplication(!multiplication)} }
           />
+          { multiplication &&
           <div>
             <label htmlFor="multiplication-digits-input">Max digits for operands (multiplication)</label>
             <input 
@@ -137,6 +143,7 @@ function GeneratorSettingsPage() {
               onBlur={(e: React.ChangeEvent<HTMLInputElement>) => { e.target.value === '' ? setMultiplicationDigits(1) : doNothing() }}
             />
           </div>
+          }
         </div>
       </div>
 
@@ -149,6 +156,7 @@ function GeneratorSettingsPage() {
           checked={isTimerEnabled}
           onChange={ () => {setIsTimerEnabled(!isTimerEnabled)} }
         />
+        { isTimerEnabled &&
         <div>
           <label htmlFor="timer-duration">Max duration for timer</label>
           <input 
@@ -159,6 +167,7 @@ function GeneratorSettingsPage() {
             onBlur={(e: React.ChangeEvent<HTMLInputElement>) => { e.target.value === '' ? setTimerDuration(1) : doNothing() }}
           />
         </div>
+        }
       </div>
 
       {/* apply / cancel buttons */}
