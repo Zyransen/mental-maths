@@ -17,7 +17,7 @@ function ErrorPage() {
           className="rounded-full py-2 px-5 text-2xl bg-fuchsia-800 hover:bg-fuchsia-800/80 shadow-[0_12px_25px_rgba(0,0,0,0.35)]"
           onClick={goHome}
         >
-          Take me home
+          Take Me Home
         </button>
       </div>
       
