@@ -4,7 +4,7 @@ import { createBrowserRouter, RouterProvider } from 'react-router-dom'
 
 import HomePage from './Pages/HomePage'
 import GeneratorSettingsPage from './Pages/GeneratorSettingsPage'
-import NoPage from './Pages/NoPage'
+import ErrorPage from './Pages/ErrorPage'
 
 import './css/index.css'
 
@@ -13,7 +13,7 @@ const router = createBrowserRouter([
   {
     path: "/",
     element: <HomePage/>,
-    errorElement: <NoPage/>
+    errorElement: <ErrorPage/>
   },
   {
     path: "/settings",
