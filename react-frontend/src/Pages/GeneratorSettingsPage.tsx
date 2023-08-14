@@ -52,6 +52,11 @@ function GeneratorSettingsPage() {
     if(subtraction) { operations.push(Operation.Subtraction) }
     if(multiplication) { operations.push(Operation.Multiplication) }
 
+    // if no operations are enabled, enable addition as a default
+    if(operations.length === 0) {
+      operations.push(Operation.Addition)
+    }
+
     generatorSettings.operations = operations
 
     generatorSettings.additionDigits = additionDigits
