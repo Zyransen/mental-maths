@@ -4,6 +4,7 @@ import timerSettings from "../Settings/TimerSettings"
 import { CountdownCircleTimer } from 'react-countdown-circle-timer'
 import MathProblemVisualizer from "./MathProblemVisualizer"
 import Score from "./Score"
+import SettingsButton from './SettingsButton';
 
 
 function MathProblemWrapper() {
@@ -94,7 +95,7 @@ function MathProblemWrapper() {
           />
         </form>
         { timerSettings.isTimerEnabled &&
-          <div className="absolute right-0 my-auto">
+          <div className="absolute left-0 my-auto">
             <CountdownCircleTimer
               key={key}
               isPlaying={timerSettings.isTimerEnabled}
@@ -108,7 +109,10 @@ function MathProblemWrapper() {
               {({ remainingTime }) => remainingTime}
             </CountdownCircleTimer>
           </div>
-        }
+        }        
+        <div className="absolute right-0 hover:animate-spin-slow">
+          <SettingsButton/>
+        </div>
       </div>
       <Score currentScore={score}/>
     </div>

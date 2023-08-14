@@ -23,7 +23,8 @@ export default {
         }
       },
       animation: {
-        'shake': 'shake 0.7s cubic-bezier(.36,.07,.19,.97) both'
+        'shake': 'shake 0.7s cubic-bezier(.36,.07,.19,.97) both',
+        'spin-slow': 'spin 10s linear infinite' 
       }
     },
   },
