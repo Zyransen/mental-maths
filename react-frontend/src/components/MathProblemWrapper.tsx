@@ -85,7 +85,7 @@ function MathProblemWrapper() {
           <input 
             id="user-input-result" 
             data-correctness={correctness}
-            className="text-center w-52 py-2 text-2xl rounded-3xl  border border-zinc-800 bg-zinc-600  placeholder:italic shadow-[0_12px_25px_rgba(0,0,0,0.25)] data-[correctness=incorrect]:border-red-600 data-[correctness=correct]:border-green-600 focus:outline-none focus:border-zinc-400"
+            className="text-center w-52 py-2 text-2xl rounded-3xl  border border-zinc-800 bg-zinc-600  placeholder:italic shadow-[0_12px_25px_rgba(0,0,0,0.35)] data-[correctness=incorrect]:border-red-600 data-[correctness=correct]:border-green-600 focus:outline-none focus:border-zinc-400"
             type="number"
             placeholder="result"
             value={userInput || ''} 
