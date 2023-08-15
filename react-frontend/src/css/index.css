@@ -17,3 +17,47 @@
     -moz-appearance: textfield !important;
   }
 }
+
+/* checkbox css */
+
+input[type="checkbox"].checkbox-switch{
+	font-size: 30px;
+	-webkit-appearance: none;
+	   -moz-appearance: none;
+	        appearance: none;
+	width: 1.9em;
+	height: 0.9em;
+	background: #52525b;
+	border-radius: 1.8em;
+	position: relative;
+	cursor: pointer;
+	outline: none;
+	-webkit-transition: all .2s ease-in-out;
+	transition: all .2s ease-in-out;
+  }
+  
+  input[type="checkbox"].checkbox-switch:checked{
+	background: #a21caf;
+  }
+  
+  input[type="checkbox"].checkbox-switch:after{
+	position: absolute;
+	content: "";
+	width: 0.9em;
+	height: 0.9em;
+	border-radius: 50%;
+	background: #e4e4e7;
+	-webkit-box-shadow: 0 0 .25em rgba(0,0,0,.3);
+	        box-shadow: 0 0 .25em rgba(0,0,0,.3);
+	-webkit-transform: scale(.85);
+	        transform: scale(.85);
+	left: 0;
+	-webkit-transition: all .2s ease-in-out;
+	transition: all .2s ease-in-out;
+  }
+  
+  input[type="checkbox"].checkbox-switch:checked:after{
+	left: calc(100% - 0.9em);
+  }
+
+/* checkbox css end */

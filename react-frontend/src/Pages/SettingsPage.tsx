@@ -87,6 +87,7 @@ function SettingsPage() {
           <input 
             id='addition-checkbox'
             type="checkbox" 
+            className="checkbox-switch"
             checked={addition}
             onChange={ () => {setAddition(!addition)} }
           />
@@ -111,6 +112,7 @@ function SettingsPage() {
           <input 
             id='subtraction-checkbox'
             type="checkbox" 
+            className="checkbox-switch"
             checked={subtraction}
             onChange={ () => {setSubtraction(!subtraction)} }
           />
@@ -134,6 +136,7 @@ function SettingsPage() {
           <input 
             id='multiplication-checkbox'
             type="checkbox" 
+            className="checkbox-switch"
             checked={multiplication}
             onChange={ () => {setMultiplication(!multiplication)} }
           />
@@ -158,6 +161,7 @@ function SettingsPage() {
         <input 
           id='timer-checkbox'
           type="checkbox" 
+          className="checkbox-switch"
           checked={isTimerEnabled}
           onChange={ () => {setIsTimerEnabled(!isTimerEnabled)} }
         />
@@ -179,7 +183,7 @@ function SettingsPage() {
       <div className="pt-7 flex justify-center md:justify-normal">
         <div className="px-3 md:px-5">
           <button 
-            className="rounded-full py-2 px-4 text-lg font-semibold bg-fuchsia-800 hover:bg-fuchsia-800/80 shadow-[0_12px_25px_rgba(0,0,0,0.35)]"
+            className="rounded-full py-2 px-4 text-lg font-semibold bg-fuchsia-700 hover:bg-fuchsia-700/80 shadow-[0_12px_25px_rgba(0,0,0,0.35)]"
             onClick={handleApply}
           >
             Apply Changes
