@@ -4,7 +4,7 @@ import { Operation } from "../MathGeneration/ArithmeticOperation"
 import timerSettings from "../Settings/TimerSettings"
 import { useNavigate } from "react-router-dom"
 
-function GeneratorSettingsPage() {
+function SettingsPage() {
 
   // enabled operations
   const [addition, setAddition] = useState<boolean>(generatorSettings.operations.includes(Operation.Addition))
@@ -198,4 +198,4 @@ function GeneratorSettingsPage() {
   )
 }
 
-export default GeneratorSettingsPage
+export default SettingsPage

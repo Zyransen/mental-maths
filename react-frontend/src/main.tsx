@@ -3,7 +3,7 @@ import ReactDOM from 'react-dom/client'
 import { createBrowserRouter, RouterProvider } from 'react-router-dom'
 
 import HomePage from './Pages/HomePage'
-import GeneratorSettingsPage from './Pages/GeneratorSettingsPage'
+import SettingsPage from './Pages/SettingsPage'
 import ErrorPage from './Pages/ErrorPage'
 
 import './css/index.css'
@@ -17,7 +17,7 @@ const router = createBrowserRouter([
   },
   {
     path: "/settings",
-    element: <GeneratorSettingsPage/>
+    element: <SettingsPage/>
   }
 ])
 
