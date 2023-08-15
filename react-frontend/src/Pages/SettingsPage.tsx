@@ -77,26 +77,31 @@ function SettingsPage() {
   function doNothing() { return }
 
   return (
-    <div>
-      <h1>Settings</h1> 
-      <h2>Operations</h2>
+    <div className="relative border-2 border-zinc-900 bg-zinc-700/20 rounded-3xl w-[600px] h-[700px] mx-auto my-14">
+      <h1 className="text-6xl font-semibold my-5 text-center">Settings</h1> 
+      <h2 className="text-4xl py-5 pl-20">Operations</h2>
       <div>
         {/* Addition Settings */}
-        <div id='addition'>
-          <label htmlFor="addition-checkbox">Addition</label>
-          <input 
-            id='addition-checkbox'
-            type="checkbox" 
-            className="checkbox-switch"
-            checked={addition}
-            onChange={ () => {setAddition(!addition)} }
-          />
+        <div id='addition' className="text-xl pl-28 pb-4">
+          <div className="relative flex items-center pb-1 text-2xl">
+            <label htmlFor="addition-checkbox">Addition</label>
+            <div className="absolute right-28 top-0.5">
+              <input 
+                id='addition-checkbox'
+                type="checkbox" 
+                className="checkbox-switch"
+                checked={addition}
+                onChange={ () => {setAddition(!addition)} }
+              />
+            </div>
+          </div>
           { addition &&
-          <div>
+          <div  className="relative">
             <label htmlFor="addition-digits-input">Max digits for operands (addition)</label>
             <input 
               id='addition-digits-input'
               type="number" 
+              className="w-[50px] h-[25px] text-center rounded-full bg-zinc-900/60 absolute right-28 top-1"
               value={additionDigits || ''}
               onChange={(e: React.ChangeEvent<HTMLInputElement>) => { setAdditionDigits(getValidDigits(e.target.valueAsNumber)) }}
               onBlur={(e: React.ChangeEvent<HTMLInputElement>) => { e.target.value === '' ? setAdditionDigits(1) : doNothing() }}
@@ -107,21 +112,26 @@ function SettingsPage() {
         </div>
 
         {/* Subtraction Settings */}
-        <div id='subtraction'>
-          <label htmlFor="subtraction-checkbox">Subtraction</label>
-          <input 
-            id='subtraction-checkbox'
-            type="checkbox" 
-            className="checkbox-switch"
-            checked={subtraction}
-            onChange={ () => {setSubtraction(!subtraction)} }
-          />
+        <div id='subtraction' className="text-xl pl-28 pb-4">
+          <div className="relative flex items-center pb-1 text-2xl">
+            <label htmlFor="subtraction-checkbox">Subtraction</label>
+            <div className="absolute right-28 top-0.5">
+              <input 
+                id='subtraction-checkbox'
+                type="checkbox" 
+                className="checkbox-switch"
+                checked={subtraction}
+                onChange={ () => {setSubtraction(!subtraction)} }
+              />
+            </div>
+          </div>
           { subtraction &&
-          <div>
+          <div className="relative">
             <label htmlFor="subtraction-digits-input">Max digits for operands (subtraction)</label>
             <input 
               id='subtraction-digits-input'
               type="number" 
+              className="w-[50px] h-[25px] text-center rounded-full bg-zinc-900/60 absolute right-28 top-1"
               value={subtractionDigits || ''}
               onChange={(e: React.ChangeEvent<HTMLInputElement>) => { setSubtractionDigits(getValidDigits(e.target.valueAsNumber)) }}
               onBlur={(e: React.ChangeEvent<HTMLInputElement>) => { e.target.value === '' ? setSubtractionDigits(1) : doNothing() }}
@@ -131,21 +141,26 @@ function SettingsPage() {
         </div>
 
         {/* Multiplication Settings */}
-        <div id='multiplication'>
-          <label htmlFor="multiplication-checkbox">Multiplication</label>
-          <input 
-            id='multiplication-checkbox'
-            type="checkbox" 
-            className="checkbox-switch"
-            checked={multiplication}
-            onChange={ () => {setMultiplication(!multiplication)} }
-          />
+        <div id='multiplication' className="text-xl pl-28 pb-4">
+          <div className="relative flex items-center pb-1 text-2xl">
+            <label htmlFor="multiplication-checkbox">Multiplication</label>
+            <div className="absolute right-28 top-0.5">
+              <input 
+                id='multiplication-checkbox'
+                type="checkbox" 
+                className="checkbox-switch"
+                checked={multiplication}
+                onChange={ () => {setMultiplication(!multiplication)} }
+              />
+            </div>
+          </div>
           { multiplication &&
-          <div>
+          <div className="relative">
             <label htmlFor="multiplication-digits-input">Max digits for operands (multiplication)</label>
             <input 
               id='multiplication-digits-input'
               type="number" 
+              className="w-[50px] h-[25px] text-center rounded-full bg-zinc-900/60 absolute right-28 top-1"
               value={multiplicationDigits || ''}
               onChange={(e: React.ChangeEvent<HTMLInputElement>) => { setMultiplicationDigits(getValidDigits(e.target.valueAsNumber)) }}
               onBlur={(e: React.ChangeEvent<HTMLInputElement>) => { e.target.value === '' ? setMultiplicationDigits(1) : doNothing() }}
@@ -155,22 +170,27 @@ function SettingsPage() {
         </div>
       </div>
 
-      <h2>Timer</h2>
-      <div>
-        <label htmlFor="timer-checkbox">enable Timer</label>
-        <input 
-          id='timer-checkbox'
-          type="checkbox" 
-          className="checkbox-switch"
-          checked={isTimerEnabled}
-          onChange={ () => {setIsTimerEnabled(!isTimerEnabled)} }
-        />
+      <h2 className="text-4xl pt-7 pb-5 pl-20">Timer</h2>
+      <div className="text-xl pl-28 pb-4">
+        <div className="relative flex items-center">
+          <label htmlFor="timer-checkbox">enable Timer</label>
+          <div className="absolute right-28 top-0.5">
+            <input 
+              id='timer-checkbox'
+              type="checkbox" 
+              className="checkbox-switch"
+              checked={isTimerEnabled}
+              onChange={ () => {setIsTimerEnabled(!isTimerEnabled)} }
+            />
+          </div>
+        </div>
         { isTimerEnabled &&
-        <div>
+        <div className="relative">
           <label htmlFor="timer-duration">Max duration for timer</label>
           <input 
             id='timer-duration'
             type="number" 
+            className="w-[50px] h-[25px] text-center rounded-full bg-zinc-900/60 absolute right-28 top-1"
             value={timerDuration || ''}
             onChange={(e: React.ChangeEvent<HTMLInputElement>) => { setTimerDuration(getValidDuration(e.target.valueAsNumber)) }}
             onBlur={(e: React.ChangeEvent<HTMLInputElement>) => { e.target.value === '' ? setTimerDuration(1) : doNothing() }}
@@ -180,7 +200,7 @@ function SettingsPage() {
       </div>
 
       {/* apply / cancel buttons */}
-      <div className="pt-7 flex justify-center md:justify-normal">
+      <div className="pt-7 flex justify-center left-0 right-0 absolute bottom-10">
         <div className="px-3 md:px-5">
           <button 
             className="rounded-full py-2 px-4 text-lg font-semibold bg-fuchsia-700 hover:bg-fuchsia-700/80 shadow-[0_12px_25px_rgba(0,0,0,0.35)]"

@@ -21,7 +21,8 @@
 /* checkbox css */
 
 input[type="checkbox"].checkbox-switch{
-	font-size: 30px;
+  /* use font-size for general scaling */
+	font-size: 25px;
 	-webkit-appearance: none;
 	   -moz-appearance: none;
 	        appearance: none;
