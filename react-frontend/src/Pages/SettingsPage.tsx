@@ -78,8 +78,8 @@ function SettingsPage() {
 
   return (
     <div className="sm:relative sm:border-2 sm:border-zinc-900 sm:bg-zinc-700/20 sm:rounded-3xl sm:w-[600px] sm:h-[700px] sm:mx-auto sm:my-14">
-      <h1 className="text-5xl sm:text-6xl font-semibold my-5 text-center">Settings</h1> 
-      <h2 className="text-3xl sm:text-4xl py-5 pl-6 sm:pl-20">Operations</h2>
+      <h1 className="text-5xl sm:text-6xl font-semibold my-5 text-center drop-shadow-[0_10px_15px_rgba(0,0,0,0.65)]">Settings</h1> 
+      <h2 className="text-3xl sm:text-4xl py-5 pl-6 sm:pl-20 drop-shadow-[0_10px_15px_rgba(0,0,0,0.45)]">Operations</h2>
       <div>
         {/* Addition Settings */}
         <div id='addition' className="text-lg sm:text-xl pl-10 sm:pl-28 pb-3 sm:pb-4">
@@ -97,7 +97,7 @@ function SettingsPage() {
           </div>
           { addition &&
           <div  className="relative">
-            <label htmlFor="addition-digits-input">Max digits for operands (addition)</label>
+            <label htmlFor="addition-digits-input">Digits per operand (max)</label>
             <input 
               id='addition-digits-input'
               type="number" 
@@ -127,7 +127,7 @@ function SettingsPage() {
           </div>
           { subtraction &&
           <div className="relative">
-            <label htmlFor="subtraction-digits-input">Max digits for operands (subtraction)</label>
+            <label htmlFor="subtraction-digits-input">Digits per operand (max)</label>
             <input 
               id='subtraction-digits-input'
               type="number" 
@@ -156,7 +156,7 @@ function SettingsPage() {
           </div>
           { multiplication &&
           <div className="relative">
-            <label htmlFor="multiplication-digits-input">Max digits for operands (multiplication)</label>
+            <label htmlFor="multiplication-digits-input">Digits per operand (max)</label>
             <input 
               id='multiplication-digits-input'
               type="number" 
@@ -170,10 +170,10 @@ function SettingsPage() {
         </div>
       </div>
 
-      <h2 className="text-3xl sm:text-4xl pt-7 pb-5 pl-6 sm:pl-20">Timer</h2>
+      <h2 className="text-3xl sm:text-4xl pt-7 pb-5 pl-6 sm:pl-20 drop-shadow-[0_10px_15px_rgba(0,0,0,0.45)]">Timer</h2>
       <div className="text-lg sm:text-xl pl-10 sm:pl-28 pb-3 sm:pb-4">
         <div className="relative flex items-center">
-          <label htmlFor="timer-checkbox">enable Timer</label>
+          <label htmlFor="timer-checkbox">Enable Timer</label>
           <div className="absolute right-10 sm:right-28 top-1 sm:top-0.5">
             <input 
               id='timer-checkbox'
@@ -186,7 +186,7 @@ function SettingsPage() {
         </div>
         { isTimerEnabled &&
         <div className="relative">
-          <label htmlFor="timer-duration">Max duration for timer</label>
+          <label htmlFor="timer-duration">Maximum timer duration (in s)</label>
           <input 
             id='timer-duration'
             type="number" 
