@@ -79,7 +79,7 @@ function MathProblemWrapper() {
   return(
     <div className="">
       <MathProblemVisualizer firstOperand={mathProblem.firstOperand} secondOperand={mathProblem.secondOperand} operation={mathProblem.operation}/>
-      <div className="relative py-4 flex justify-center items-center w-80">
+      <div className="relative py-4 flex justify-center items-center w-80 md:w-[21.5rem]">
         <form onSubmit={handleSubmitResult} data-correctness={correctness} className="data-[correctness=incorrect]:animate-shake">
           <label htmlFor="user-input-result" className="sr-only">User Input</label>
           <input 
