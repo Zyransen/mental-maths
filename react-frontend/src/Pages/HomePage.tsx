@@ -9,7 +9,6 @@ function HomePage() {
       <div className='flex items-center justify-center'>
         <MathProblemWrapper/>
       </div>
-      <div className='absolute bottom-0 w-full text-center'>© 2023 Zyransen</div>
     </div>
   )
 }

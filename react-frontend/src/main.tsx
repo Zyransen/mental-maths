@@ -7,6 +7,7 @@ import SettingsPage from './Pages/SettingsPage'
 import ErrorPage from './Pages/ErrorPage'
 
 import './css/index.css'
+import Footer from './components/Footer';
 
 
 const router = createBrowserRouter([
@@ -24,5 +25,8 @@ const router = createBrowserRouter([
 ReactDOM.createRoot(document.getElementById('root')!).render(
   <React.StrictMode>
     <RouterProvider router={router}/>
+    <div className=''>
+      <Footer/>
+    </div>
   </React.StrictMode>,
 )

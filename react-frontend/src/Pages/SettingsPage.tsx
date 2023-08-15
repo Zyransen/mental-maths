@@ -200,7 +200,7 @@ function SettingsPage() {
       </div>
 
       {/* apply / cancel buttons */}
-      <div className="pt-7 flex justify-center left-0 right-0 absolute bottom-10">
+      <div className="pt-7 flex justify-center left-0 right-0 absolute bottom-12 sm:bottom-10">
         <div className="px-3 md:px-5">
           <button 
             className="rounded-full py-2 px-4 text-lg font-semibold bg-fuchsia-700 hover:bg-fuchsia-700/80 shadow-[0_12px_25px_rgba(0,0,0,0.35)]"
