@@ -176,13 +176,23 @@ function GeneratorSettingsPage() {
       </div>
 
       {/* apply / cancel buttons */}
-      <div>
-        <button onClick={handleApply}>
-          Apply Changes
-        </button>
-        <button onClick={handleCancel}>
-          Cancel
-        </button>
+      <div className="pt-7 flex justify-center md:justify-normal">
+        <div className="px-3 md:px-5">
+          <button 
+            className="rounded-full py-2 px-4 text-lg font-semibold bg-fuchsia-800 hover:bg-fuchsia-800/80 shadow-[0_12px_25px_rgba(0,0,0,0.35)]"
+            onClick={handleApply}
+          >
+            Apply Changes
+          </button>
+        </div>
+        <div className="px-3 md:px-5">
+          <button 
+            className="rounded-full py-2 px-4 text-lg font-semibold bg-red-700 hover:bg-red-700/80 shadow-[0_12px_25px_rgba(0,0,0,0.35)]"
+            onClick={handleCancel}
+          >
+            Cancel
+          </button>
+        </div>
       </div>
     </div>
   )
