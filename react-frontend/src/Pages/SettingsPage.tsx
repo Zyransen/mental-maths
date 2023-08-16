@@ -11,11 +11,13 @@ function SettingsPage() {
   const [addition, setAddition] = useState<boolean>(generatorSettings.operations.includes(Operation.Addition))
   const [subtraction, setSubtraction] = useState<boolean>(generatorSettings.operations.includes(Operation.Subtraction))
   const [multiplication, setMultiplication] = useState<boolean>(generatorSettings.operations.includes(Operation.Multiplication))
+  const [division, setDivision] = useState<boolean>(generatorSettings.operations.includes(Operation.Division))
 
   // max amount of digits for operands of respective operations
   const [additionDigits, setAdditionDigits] = useState<number>(generatorSettings.additionDigits)
   const [subtractionDigits, setSubtractionDigits] = useState<number>(generatorSettings.subtractionDigits)
   const [multiplicationDigits, setMultiplicationDigits] = useState<number>(generatorSettings.multiplicationDigits)
+  const [divisionDigits, setDivisionDigits] = useState<number>(generatorSettings.divisionDigits)
 
   // timer settings
   const [isTimerEnabled, setIsTimerEnabled] = useState<boolean>(timerSettings.isTimerEnabled)
@@ -41,6 +43,7 @@ function SettingsPage() {
     if(addition) { operations.push(Operation.Addition) }
     if(subtraction) { operations.push(Operation.Subtraction) }
     if(multiplication) { operations.push(Operation.Multiplication) }
+    if(division) {operations.push(Operation.Division)}
 
     // if no operations are enabled, enable addition as a default
     if(operations.length === 0) {
@@ -52,6 +55,7 @@ function SettingsPage() {
     generatorSettings.additionDigits = additionDigits
     generatorSettings.subtractionDigits = subtractionDigits
     generatorSettings.multiplicationDigits = multiplicationDigits
+    generatorSettings.divisionDigits = divisionDigits
 
     timerSettings.isTimerEnabled = isTimerEnabled
     timerSettings.timeToSolve = timerDuration
@@ -96,6 +100,15 @@ function SettingsPage() {
           setOperation={setMultiplication} 
           operationDigits={multiplicationDigits} 
           setOperationDigits={setMultiplicationDigits}
+        />
+
+        {/* Division Settings */}
+        <OperationSetting 
+          operationName="Division" 
+          operation={division} 
+          setOperation={setDivision} 
+          operationDigits={divisionDigits} 
+          setOperationDigits={setDivisionDigits}
         />
       </div>
 
