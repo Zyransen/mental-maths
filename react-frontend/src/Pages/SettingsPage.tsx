@@ -3,6 +3,7 @@ import generatorSettings from "../Settings/GeneratorSettings"
 import { Operation } from "../MathGeneration/ArithmeticOperation"
 import timerSettings from "../Settings/TimerSettings"
 import { useNavigate } from "react-router-dom"
+import OperationSetting from './../components/OperationSetting';
 
 function SettingsPage() {
 
@@ -22,17 +23,6 @@ function SettingsPage() {
 
   // navigation
   const navigate = useNavigate()
-
-  function getValidDigits(userInput: number) {
-    // number of digits of an operand must be greater than 1 and less than MAX_DIGITS
-    const MIN_DIGITS = 1
-    const MAX_DIGITS = 5
-
-    if(userInput < MIN_DIGITS) { return MIN_DIGITS }
-    if(userInput > MAX_DIGITS) { return MAX_DIGITS }
-
-    return userInput
-  } 
 
   function getValidDuration(userInput: number) {
     // timer duration must  be greater than 1 and less than MAX_DURATION
@@ -82,98 +72,37 @@ function SettingsPage() {
       <h2 className="text-3xl sm:text-4xl py-5 pl-6 sm:pl-20 drop-shadow-[0_10px_15px_rgba(0,0,0,0.45)]">Operations</h2>
       <div>
         {/* Addition Settings */}
-        <div id='addition' className="text-lg sm:text-xl pl-10 sm:pl-28 pb-3 sm:pb-4">
-          <div className="relative flex items-center pb-0.5 sm:pb-1 text-xl sm:text-2xl">
-            <label htmlFor="addition-checkbox">Addition</label>
-            <div className="absolute right-10 sm:right-28 top-1 sm:top-0.5">
-              <input 
-                id='addition-checkbox'                            
-                type="checkbox" 
-                className="checkbox-switch"
-                checked={addition}
-                onChange={ () => {setAddition(!addition)} }
-              />
-            </div>
-          </div>
-          { addition &&
-          <div  className="relative">
-            <label htmlFor="addition-digits-input">Digits per operand (max)</label>
-            <input 
-              id='addition-digits-input'
-              type="number" 
-              className="w-[50px] h-[25px] text-center rounded-full bg-zinc-900/60 absolute right-10 sm:right-28 top-0.5 sm:top-1"
-              value={additionDigits || ''}
-              onChange={(e: React.ChangeEvent<HTMLInputElement>) => { setAdditionDigits(getValidDigits(e.target.valueAsNumber)) }}
-              onBlur={(e: React.ChangeEvent<HTMLInputElement>) => { e.target.value === '' ? setAdditionDigits(1) : doNothing() }}
-            />
-          </div>
-          }
-          
-        </div>
+        <OperationSetting 
+          operationName="Addition" 
+          operation={addition} 
+          setOperation={setAddition} 
+          operationDigits={additionDigits} 
+          setOperationDigits={setAdditionDigits}
+        />
 
         {/* Subtraction Settings */}
-        <div id='subtraction' className="text-lg sm:text-xl pl-10 sm:pl-28 pb-3 sm:pb-4">
-          <div className="relative flex items-center pb-0.5 sm:pb-1 text-xl sm:text-2xl">
-            <label htmlFor="subtraction-checkbox">Subtraction</label>
-            <div className="absolute right-10 sm:right-28 top-1 sm:top-0.5">
-              <input 
-                id='subtraction-checkbox'
-                type="checkbox" 
-                className="checkbox-switch"
-                checked={subtraction}
-                onChange={ () => {setSubtraction(!subtraction)} }
-              />
-            </div>
-          </div>
-          { subtraction &&
-          <div className="relative">
-            <label htmlFor="subtraction-digits-input">Digits per operand (max)</label>
-            <input 
-              id='subtraction-digits-input'
-              type="number" 
-              className="w-[50px] h-[25px] text-center rounded-full bg-zinc-900/60 absolute right-10 sm:right-28 top-0.5 sm:top-1"
-              value={subtractionDigits || ''}
-              onChange={(e: React.ChangeEvent<HTMLInputElement>) => { setSubtractionDigits(getValidDigits(e.target.valueAsNumber)) }}
-              onBlur={(e: React.ChangeEvent<HTMLInputElement>) => { e.target.value === '' ? setSubtractionDigits(1) : doNothing() }}
-            />
-          </div>
-          }
-        </div>
+        <OperationSetting 
+          operationName="Subtraction" 
+          operation={subtraction} 
+          setOperation={setSubtraction} 
+          operationDigits={subtractionDigits} 
+          setOperationDigits={setSubtractionDigits}
+        />
 
         {/* Multiplication Settings */}
-        <div id='multiplication' className="text-lg sm:text-xl pl-10 sm:pl-28 pb-3 sm:pb-4">
-          <div className="relative flex items-center pb-0.5 sm:pb-1 text-xl sm:text-2xl">
-            <label htmlFor="multiplication-checkbox">Multiplication</label>
-            <div className="absolute right-10 sm:right-28 top-1 sm:top-0.5">
-              <input 
-                id='multiplication-checkbox'
-                type="checkbox" 
-                className="checkbox-switch"
-                checked={multiplication}
-                onChange={ () => {setMultiplication(!multiplication)} }
-              />
-            </div>
-          </div>
-          { multiplication &&
-          <div className="relative">
-            <label htmlFor="multiplication-digits-input">Digits per operand (max)</label>
-            <input 
-              id='multiplication-digits-input'
-              type="number" 
-              className="w-[50px] h-[25px] text-center rounded-full bg-zinc-900/60 absolute right-10 sm:right-28 top-0.5 sm:top-1"
-              value={multiplicationDigits || ''}
-              onChange={(e: React.ChangeEvent<HTMLInputElement>) => { setMultiplicationDigits(getValidDigits(e.target.valueAsNumber)) }}
-              onBlur={(e: React.ChangeEvent<HTMLInputElement>) => { e.target.value === '' ? setMultiplicationDigits(1) : doNothing() }}
-            />
-          </div>
-          }
-        </div>
+        <OperationSetting 
+          operationName="Multiplication" 
+          operation={multiplication} 
+          setOperation={setMultiplication} 
+          operationDigits={multiplicationDigits} 
+          setOperationDigits={setMultiplicationDigits}
+        />
       </div>
 
       <h2 className="text-3xl sm:text-4xl pt-7 pb-5 pl-6 sm:pl-20 drop-shadow-[0_10px_15px_rgba(0,0,0,0.45)]">Timer</h2>
       <div className="text-lg sm:text-xl pl-10 sm:pl-28 pb-3 sm:pb-4">
         <div className="relative flex items-center">
-          <label htmlFor="timer-checkbox">Enable Timer</label>
+          <label htmlFor="timer-checkbox">Enable timer</label>
           <div className="absolute right-10 sm:right-28 top-1 sm:top-0.5">
             <input 
               id='timer-checkbox'
