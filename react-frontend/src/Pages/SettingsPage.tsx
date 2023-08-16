@@ -3,7 +3,7 @@ import generatorSettings from "../Settings/GeneratorSettings"
 import { Operation } from "../MathGeneration/ArithmeticOperation"
 import timerSettings from "../Settings/TimerSettings"
 import { useNavigate } from "react-router-dom"
-import OperationSetting from './../components/OperationSetting';
+import OperationSetting from "./../components/OperationSetting"
 
 function SettingsPage() {
 
