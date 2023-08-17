@@ -18,7 +18,12 @@ const router = createBrowserRouter([
   },
   {
     path: "/settings",
-    element: <SettingsPage/>
+    element: <SettingsPage/>,
+    errorElement: <ErrorPage/>
+  },
+  {
+    path: "*",
+    element: <ErrorPage/>
   }
 ])
 
