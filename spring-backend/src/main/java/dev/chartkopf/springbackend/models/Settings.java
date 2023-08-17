@@ -2,6 +2,9 @@ package dev.chartkopf.springbackend.models;
 
 import org.springframework.data.mongodb.core.mapping.Field;
 
+import lombok.Data;
+
+@Data
 public class Settings {
   @Field
   private String[] operations;
