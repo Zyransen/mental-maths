@@ -146,8 +146,14 @@ class MathProblemGenerator {
 
     // always generate divisiors greater than 1 by subtracting 2 from the maximum and adding 2 onto the result
     // divisors can be no greater than the maxium number with the given digits divided by 2 to avoid divisions with a result of 1
-    const maxDivisor = (maxWithDigits / 2) - 2
-    const divisor = Math.floor(Math.random() * maxDivisor) + 2
+    const maxDivisor = (maxWithDigits / 3) - 2
+    let divisor = Math.floor(Math.random() * maxDivisor) + 2
+
+    // decrease the divisor by a random amount, to increase the average size of the result, which in turn increases the 
+    // difficulty of the problems, especially for higher numbers of digits
+    for(let i=0; i<3; i++){
+      divisor = divisor - Math.floor(Math.random() * (divisor-1))
+    }
 
     // always generate results greater than 1 
     const maxResult = Math.floor(maxWithDigits / divisor) - 2
