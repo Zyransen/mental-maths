@@ -6,6 +6,7 @@ import lombok.Data;
 
 @Data
 public class Settings {
+  
   @Field
   private String[] operations;
   @Field

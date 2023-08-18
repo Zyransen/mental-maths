@@ -11,6 +11,7 @@ import lombok.Data;
 @Data
 @Document(collection = "users")
 public class User {
+
   @Id
   private String id;
   @Field
@@ -25,6 +26,4 @@ public class User {
   private Stats stats;
   @Field
   private Settings settings;
-
-
 }

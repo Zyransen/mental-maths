@@ -6,6 +6,7 @@ import lombok.Data;
 
 @Data
 public class Stats {
+
   @Field
   private int highscore;
   @Field
@@ -18,5 +19,4 @@ public class Stats {
   private int divisionCorrect;
   @Field
   private int rootCorrect;
-
 }
