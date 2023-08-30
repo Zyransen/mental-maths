@@ -1,6 +1,6 @@
 import React from 'react'
 import ReactDOM from 'react-dom/client'
-import { createBrowserRouter, RouterProvider } from 'react-router-dom'
+import { createHashRouter, RouterProvider } from 'react-router-dom'
 
 import HomePage from './Pages/HomePage'
 import SettingsPage from './Pages/SettingsPage'
@@ -10,7 +10,7 @@ import './css/index.css'
 import Footer from './components/Footer';
 
 
-const router = createBrowserRouter([
+const router = createHashRouter([
   {
     path: "/",
     element: <HomePage/>,
