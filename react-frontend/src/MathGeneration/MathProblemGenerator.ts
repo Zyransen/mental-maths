@@ -10,17 +10,39 @@ export type MathProblem = {
 
 class MathProblemGenerator {
   /**
-   * Randomly generates an object of type MathProblem, consisting of two operands, an operation, aswell as the result of the generated arithmetic problem
+   * Randomly generates an object of type MathProblem, consisting of two operands, an operation and the result of the generated arithmetic problem
    * @returns a newly generated MathProblem
    */
   generateProblem(): MathProblem {
     const randomOperation = this.generateOperation();
-    let firstOperand = this.generateOperand(randomOperation)
-    let secondOperand = this.generateOperand(randomOperation)
+    let problem = {
+      firstOperand: 0,
+      secondOperand: 0,
+      operation: '',
+      result: 0
+    }
 
-    while(!this.checkOperandValidity(firstOperand, secondOperand, randomOperation)) {
-      firstOperand = this.generateOperand(randomOperation)
-      secondOperand = this.generateOperand(randomOperation)
+    switch(randomOperation) {
+      case Operation.Division: {
+        problem = this.generateDivision(generatorSettings.divisionDigits)
+        break
+      }
+      default: {
+        problem = this.generateStandardProblem(randomOperation)
+        break
+      }
+    }
+
+    return problem
+  }
+
+  private generateStandardProblem(operation: Operation): MathProblem {
+    let firstOperand = this.generateOperand(operation)
+    let secondOperand = this.generateOperand(operation)
+
+    while(!this.checkOperandValidity(firstOperand, secondOperand, operation)) {
+      firstOperand = this.generateOperand(operation)
+      secondOperand = this.generateOperand(operation)
     }
 
     // avoid negative results from substractions
@@ -33,8 +55,8 @@ class MathProblemGenerator {
     return {
       firstOperand: firstOperand,
       secondOperand: secondOperand,
-      operation: randomOperation.toString(),
-      result: this.calculateResult(firstOperand, secondOperand, randomOperation.toString()),
+      operation: operation.toString(),
+      result: this.calculateResult(firstOperand, secondOperand, operation)
     }
   }
 
@@ -118,6 +140,35 @@ class MathProblemGenerator {
   private calculateResult(firstOperand: number, secondOperand: number, operation: string): number {
     return new Function('return ' + firstOperand + operation + secondOperand)()
   }
+
+  private generateDivision(digits: number): MathProblem {
+    const maxWithDigits = this.digitsToMax(digits)
+
+    // always generate divisiors greater than 1 by subtracting 2 from the maximum and adding 2 onto the result
+    // divisors can be no greater than the maxium number with the given digits divided by 2 to avoid divisions with a result of 1
+    const maxDivisor = (maxWithDigits / 3) - 2
+    let divisor = Math.floor(Math.random() * maxDivisor) + 2
+
+    // decrease the divisor by a random amount, to increase the average size of the result, which in turn increases the 
+    // difficulty of the problems, especially for higher numbers of digits
+    for(let i=0; i<3; i++){
+      divisor = divisor - Math.floor(Math.random() * (divisor-1))
+    }
+
+    // always generate results greater than 1 
+    const maxResult = Math.floor(maxWithDigits / divisor) - 2
+    const result = Math.floor(Math.random() * maxResult) + 2
+
+    const dividend = divisor * result
+
+    return {
+      firstOperand: dividend,
+      secondOperand: divisor,
+      operation: "/",
+      result: result
+    }
+  }
+
 }
 
 export default new MathProblemGenerator()
